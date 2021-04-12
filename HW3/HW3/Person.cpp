@@ -7,7 +7,7 @@ using namespace std;
 Person::Person(int iSFloor = -1, int iDFloor = -1, int iATime = -1) {
 	startingFloor = iSFloor;
 	desiredFloor = iDFloor;
-	arrivalTime = iATime;
+	elevatorArrivalTime = iATime;
 }
 
 // Getters
@@ -17,8 +17,11 @@ int Person::getStartingFloor() {
 int Person::getDesiredFloor() {
 	return desiredFloor;
 }
-int Person::getArrivalTime() {
-	return arrivalTime;
+int Person::getElevatorArrivalTime() {
+	return elevatorArrivalTime;
+}
+int Person::getDesiredFloorArrivalTime() {
+	return desiredFloorArrivalTime;
 }
 
 // Setters
@@ -27,6 +30,8 @@ int Person::getArrivalTime() {
 void Person::printPerson() {
 	cout << "Starting Floor: " << startingFloor << endl;
 	cout << "Desired Floor: " << desiredFloor << endl;
-	cout << "Arrival Time : " << arrivalTime << endl;
+	cout << "Arrived at elevator: " << elevatorArrivalTime << endl;
+	cout << "Arrived at desired floor: " << desiredFloorArrivalTime << endl;
+	cout << "Total wait time: " << desiredFloorArrivalTime - elevatorArrivalTime << endl;
 	cout << endl;
 }

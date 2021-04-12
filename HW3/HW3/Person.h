@@ -6,7 +6,8 @@ class Person {
 	private:
 		int startingFloor;
 		int desiredFloor;
-		int arrivalTime;
+		int elevatorArrivalTime;
+		int desiredFloorArrivalTime = 0;
 	public:
 		// Constructors
 		Person(int iSFloor, int iDFloor, int iATime);
@@ -14,7 +15,8 @@ class Person {
 		// Getters
 		int getStartingFloor();
 		int getDesiredFloor();
-		int getArrivalTime();
+		int getElevatorArrivalTime();
+		int getDesiredFloorArrivalTime();
 
 		// Setters
 		
