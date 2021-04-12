@@ -1,0 +1,7 @@
+﻿  Clock.cpp
+  HW3.cpp
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(15,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Person.cpp
+  Scheduler.cpp
+  Generating Code...
+  HW3.vcxproj -> C:\Users\Devin\Desktop\elevator-simulation\HW3\Debug\HW3.exe
