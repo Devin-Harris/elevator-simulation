@@ -14,19 +14,22 @@ class Heap {
 		bool isMaxHeap;
 	public:
 
+		Heap();
 		Heap(bool);
 
+		T seeRoot();
 		T extractRoot();
 		void insert(T);
+		void setIsMaxHeap(bool);
 
 		void swap(int index1, int index2);
 		int getLeft(int i);
 		int getRight(int i);
 		int getParent(int i);
+		int getSize();
 
 		void maxheapify();
 		void minheapify();
-
 
 };
 

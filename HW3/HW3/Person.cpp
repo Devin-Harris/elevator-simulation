@@ -4,6 +4,11 @@
 using namespace std;
 
 // Constructors
+Person::Person() {
+	startingFloor = -1;
+	desiredFloor = -1;
+	elevatorArrivalTime = -1;
+}
 Person::Person(int iSFloor = -1, int iDFloor = -1, int iATime = -1) {
 	startingFloor = iSFloor;
 	desiredFloor = iDFloor;
@@ -25,6 +30,9 @@ int Person::getDesiredFloorArrivalTime() {
 }
 
 // Setters
+void Person::setDesiredFloorArrivalTime(int time) {
+	desiredFloorArrivalTime = time;
+}
 
 // Member Functions
 void Person::printPerson() {

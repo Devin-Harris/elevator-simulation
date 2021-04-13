@@ -11,7 +11,6 @@ Scheduler::Scheduler(int iMinFloors, int iMaxFloors) {
 }
 
 Person Scheduler::schedulePerson(int currTime) {
-
 	int initialFloor = rand() % (maxFloors - minFloors) + minFloors;
 	int desiredFloor = rand() % (maxFloors - minFloors) + minFloors;
 	Person newPerson(initialFloor, desiredFloor, currTime);

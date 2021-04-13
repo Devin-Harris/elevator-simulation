@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Elevator.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Heap.cpp" />
     <ClCompile Include="HW3.cpp" />
@@ -150,6 +151,8 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="Elevator.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="Person.h" />

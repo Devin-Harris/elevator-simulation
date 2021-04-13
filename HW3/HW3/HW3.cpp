@@ -4,8 +4,9 @@
 #include "Scheduler.h"
 #include "Clock.h"
 #include "Floor.h"
-#include "Heap.h"
-#include "Heap.cpp"
+#include "Elevator.h"
+#include "Elevator.cpp"
+#include "Direction.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +14,17 @@
 
 
 using namespace std;
+void elevatorTest() {
+    int minFloor = 3;
+    int maxFloor = 8;
+    Scheduler scheduler(minFloor, maxFloor);
+    Elevator<Person> elevator(1);
+
+    for (int i = 0; i < 4; i++) {
+        Person temp = scheduler.schedulePerson(i);
+        elevator.addToCar(temp);
+    }
+}
 
 int main()
 {
@@ -29,10 +41,12 @@ int main()
         floors.push_back(newFloor);
     }
 
+    // These lines will be re incorporated into the building class
+    Elevator<Person> elevator(minFloor);
+    elevator.setDirection(idle);
+
     Scheduler scheduler(minFloor, maxFloor);
     Clock clock;
-
-
     // While clock is cycling run simulation
     while (clock.getIsCycling()) {
 
@@ -54,16 +68,28 @@ int main()
 
         // If elevator is moving down
         // Pull off highest floor thats below current floor of elevator in desired floors of people
-        // Stop at that floor next
+        if (elevator.getDirection() == down) {
+            // Check if any floors in between next floor for elevator and current floor have people waiting who want to go down
+            // If so, stop at that floor and let them on
+
+            // otherwise go to next floor of elevator heap
+            elevator.goToFloor(elevator.getNextFloor());
+        }
 
         // If elevator is moving up
         // Pull off lowest floor thats below current floor of elevator in desired floors of people
-        // Stop at that floor next
+        if (elevator.getDirection() == up) {
+            // Check if any floors in between next floor for elevator and current floor have people waiting who want to go up
+            // If so, stop at that floor and let them on
+
+            // otherwise go to next floor of elevator heap
+            elevator.goToFloor(elevator.getNextFloor());
+        }
 
         // If elevator is stopped
         // Let people with desired floors at current floor out
-        // Pick up people if people on floor waiting need to go in direction elevator was moving in
-
+        // Pick up people if people on floor waiting need to go in direction elevator is moving in
+        elevator.removePeopleAtDesiredFloor(clock.getCount());
 
         clock.incCount();
         // Ask every 20 time units if user want to continue simulation
@@ -74,5 +100,4 @@ int main()
             clock.setIsCycling((!(ans == 'n' || ans == 'N')));
         }
     }
-
 }

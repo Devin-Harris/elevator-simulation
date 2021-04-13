@@ -3,13 +3,27 @@
 #include "Heap.h"
 using namespace std;
 
-
+template <class T>
+Heap<T>::Heap() {
+	nodes.clear();
+	isMaxHeap = false;
+}
 template <class T>
 Heap<T>::Heap(bool initIsMaxHeap) {
 	nodes.clear();
 	isMaxHeap = initIsMaxHeap;
 };
 
+template <class T>
+T Heap <T>::seeRoot() {
+	if (nodes.size() > 0) {
+		return nodes.at(0);
+	}
+	else {
+		T person;
+		return person;
+	}
+}
 template <class T>
 T Heap <T>::extractRoot() {
 	T root = nodes.at(0);
@@ -56,6 +70,10 @@ void Heap<T>::insert(T node) {
 			looping = false;
 		}
 	}
+}
+template <class T>
+void Heap<T>::setIsMaxHeap(bool m) {
+	isMaxHeap = m;
 }
 
 template <class T>
@@ -173,9 +191,15 @@ int Heap<T>::getParent(int i) {
 }
 
 template <class T>
+int Heap<T>::getSize() {
+	return nodes.size();
+}
+
+template <class T>
 void Heap<T>::swap(int index1, int index2) {
 	T temp = nodes.at(index1);
 	nodes.at(index1) = nodes.at(index2);
 	nodes.at(index2) = temp;
 }
+
 

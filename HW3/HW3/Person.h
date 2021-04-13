@@ -10,6 +10,7 @@ class Person {
 		int desiredFloorArrivalTime = 0;
 	public:
 		// Constructors
+		Person();
 		Person(int iSFloor, int iDFloor, int iATime);
 
 		// Getters
@@ -19,6 +20,7 @@ class Person {
 		int getDesiredFloorArrivalTime();
 
 		// Setters
+		void setDesiredFloorArrivalTime(int);
 		
 		// Member Functions
 		void printPerson();
