@@ -22,6 +22,15 @@ class Person {
 		
 		// Member Functions
 		void printPerson();
+
+		// Overloaded operators
+		// used for storing people in a heap later when the elevator is decided the order of the floors to go to
+		bool operator>(const Person& comparePerson) {
+			return desiredFloor > comparePerson.desiredFloor;
+		}
+		bool operator<(const Person& comparePerson) {
+			return desiredFloor < comparePerson.desiredFloor;
+		}
 };
 
 

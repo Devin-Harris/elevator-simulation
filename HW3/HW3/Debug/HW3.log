@@ -1,4 +1,13 @@
 ﻿  HW3.cpp
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(17,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(43,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(66,37): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(62): message : while compiling class template member function 'void Heap<Person>::maxheapify(void)'
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(20): message : see reference to function template instantiation 'void Heap<Person>::maxheapify(void)' being compiled
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(8): message : while compiling class template member function 'Heap<Person>::Heap(bool)'
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(21): message : see reference to function template instantiation 'Heap<Person>::Heap(bool)' being compiled
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(21): message : see reference to class template instantiation 'Heap<Person>' being compiled
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(67,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(114,37): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(110): message : while compiling class template member function 'void Heap<Person>::minheapify(void)'
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(23): message : see reference to function template instantiation 'void Heap<Person>::minheapify(void)' being compiled
+C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(115,39): warning C4018: '<': signed/unsigned mismatch
   HW3.vcxproj -> C:\Users\Devin\Desktop\elevator-simulation\HW3\Debug\HW3.exe

@@ -4,6 +4,8 @@
 #include "Scheduler.h"
 #include "Clock.h"
 #include "Floor.h"
+#include "Heap.h"
+#include "Heap.cpp"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,9 +18,11 @@ int main()
 {
     srand(time(NULL));
 
+    // These lines will be re incorporated into the building class
     int minFloor = 3;
     int maxFloor = 8;
 
+    // These lines will be re incorporated into the building class
     vector<Floor> floors;
     for (int i = minFloor; i <= maxFloor; i++) {
         Floor newFloor(i);
