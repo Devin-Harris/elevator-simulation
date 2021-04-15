@@ -139,8 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Building.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Elevator.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Heap.cpp" />
@@ -149,9 +151,11 @@
     <ClCompile Include="Scheduler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Building.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Elevator.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Heap.h" />
