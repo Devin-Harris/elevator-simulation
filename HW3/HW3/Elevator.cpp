@@ -3,6 +3,12 @@
 #include "Elevator.h"
 
 template <class T>
+Elevator<T>::Elevator() {
+	currentFloor = -1;
+	direction = idle;
+}
+
+template <class T>
 Elevator<T>::Elevator(int floor) {
 	currentFloor = floor;
 	direction = idle;
@@ -19,13 +25,14 @@ int Elevator<T>::getNextFloor() {
 		T person = car.seeRoot();
 		return person.getDesiredFloor();
 	}
-	else {
-
-	}
 }
 template <class T>
 Direction Elevator<T>::getDirection() {
 	return direction;
+}
+template <class T>
+Heap<T> Elevator<T>::getCar() {
+	return car;
 }
 
 //Setters

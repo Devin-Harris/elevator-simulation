@@ -15,12 +15,14 @@ class Elevator {
 		Heap<T> car;
 	public:
 
+		Elevator();
 		Elevator(int);
 
 		// Getters
 		int getCurrentFloor();
 		Direction getDirection();
 		int getNextFloor();
+		Heap<T> getCar();
 
 		//Setters
 		void goToFloor(int);

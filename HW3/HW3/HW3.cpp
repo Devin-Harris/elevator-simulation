@@ -7,48 +7,34 @@
 #include "Elevator.h"
 #include "Elevator.cpp"
 #include "Direction.h"
+#include "Building.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <cmath>
 
 
 using namespace std;
-void elevatorTest() {
-    int minFloor = 3;
-    int maxFloor = 8;
-    Scheduler scheduler(minFloor, maxFloor);
-    Elevator<Person> elevator(1);
-
-    for (int i = 0; i < 4; i++) {
-        Person temp = scheduler.schedulePerson(i);
-        elevator.addToCar(temp);
-    }
-}
 
 int main()
 {
     srand(time(NULL));
 
-    // These lines will be re incorporated into the building class
+    // For prompting to continue simulation
+    int promptRate = 20;
+    int promptCount = promptRate;
+
     int minFloor = 3;
     int maxFloor = 8;
-
-    // These lines will be re incorporated into the building class
-    vector<Floor> floors;
-    for (int i = minFloor; i <= maxFloor; i++) {
-        Floor newFloor(i);
-        floors.push_back(newFloor);
-    }
-
-    // These lines will be re incorporated into the building class
-    Elevator<Person> elevator(minFloor);
-    elevator.setDirection(idle);
+    Building building(minFloor, maxFloor);
 
     Scheduler scheduler(minFloor, maxFloor);
     Clock clock;
     // While clock is cycling run simulation
     while (clock.getIsCycling()) {
+
+        cout << "Time: " << clock.getCount() << endl;
 
         // 1 in 3 chance every new time increment a new person needs to use the elevator
         if (rand() % 3 == 0) {
@@ -58,46 +44,67 @@ int main()
             // Check if person is already at desired floor
             if (temp.getDesiredFloor() != temp.getStartingFloor()) {
                 //Find the floor the person is on and add them to the lobby
-                for (int i = 0; i < floors.size(); i++) {
-                    if (floors.at(i).getFloorNumber() == temp.getStartingFloor()) {
-                        floors.at(i).addPerson(temp);
+                for (int i = 0; i < building.getFloorCount(); i++) {
+                    if (i + minFloor == temp.getStartingFloor()) {
+                        cout << endl << "--------- New Person Alert ---------" << endl;
+                        cout << "Adding person to floor " << i + minFloor << endl;
+                        building.addPersonToFloorAtIndex(i, temp);
+                        if (temp.getDesiredFloor() > temp.getStartingFloor()) {
+                            cout << "Person wants to go up to " << temp.getDesiredFloor() << endl;
+                            building.setFloorUp(i, true);
+                        }
+                        else if (temp.getDesiredFloor() < temp.getStartingFloor()) {
+                            cout << "Person wants to go down to " << temp.getDesiredFloor() << endl;
+                            building.setFloorDown(i, true);
+                        }
                     }
                 }
             }
         }
 
-        // If elevator is moving down
-        // Pull off highest floor thats below current floor of elevator in desired floors of people
-        if (elevator.getDirection() == down) {
-            // Check if any floors in between next floor for elevator and current floor have people waiting who want to go down
-            // If so, stop at that floor and let them on
-
-            // otherwise go to next floor of elevator heap
-            elevator.goToFloor(elevator.getNextFloor());
+        int prevFloor = building.getElevatorFloor();
+        building.goToFloor(building.getNextFloor());
+        int newFloor = building.getElevatorFloor();
+        if (prevFloor != newFloor) {
+            cout << endl << "Elevator moving to " << prevFloor << " from " << newFloor << endl;
         }
-
-        // If elevator is moving up
-        // Pull off lowest floor thats below current floor of elevator in desired floors of people
-        if (elevator.getDirection() == up) {
-            // Check if any floors in between next floor for elevator and current floor have people waiting who want to go up
-            // If so, stop at that floor and let them on
-
-            // otherwise go to next floor of elevator heap
-            elevator.goToFloor(elevator.getNextFloor());
+        // Add 1 extra time unit for every floor the elevator needs to move through to get to the next floor
+        for (int i = 0; i < abs(newFloor - prevFloor); i++) {
+            clock.incCount();
+            cout << "Time: " << clock.getCount() << endl;
         }
 
         // If elevator is stopped
         // Let people with desired floors at current floor out
         // Pick up people if people on floor waiting need to go in direction elevator is moving in
-        elevator.removePeopleAtDesiredFloor(clock.getCount());
+        int cartSizeBefore = 0;
+        int cartSizeAfter = 0;
+
+        cartSizeBefore = building.getElevatorSize();
+        building.removePeopleAtDesiredFloor(clock.getCount());
+        cartSizeAfter = building.getElevatorSize();
+        if (cartSizeBefore - cartSizeAfter > 0) {
+            cout << endl << "Dropped off " << cartSizeBefore - cartSizeAfter << " people" << endl;
+        }
+
+        cartSizeBefore = building.getElevatorSize();
+        building.loadElevatorCar();
+        cartSizeAfter = building.getElevatorSize();
+        if (cartSizeAfter - cartSizeBefore > 0) {
+            cout << endl << "Picked up " << cartSizeAfter - cartSizeBefore << " people" << endl;
+        }
 
         clock.incCount();
-        // Ask every 20 time units if user want to continue simulation
-        if (clock.getCount() % 20 == 0 && clock.getCount() != 0) {
+        // Ask around every 20 time units if user want to continue simulation
+        if (clock.getCount() >= promptCount && clock.getCount() != 0) {
             char ans;
-            cout << "Continue the simulation? (y, n)" << endl;
+            cout << endl << "Continue the simulation? (y, n)" << endl;
             cin >> ans;
             clock.setIsCycling((!(ans == 'n' || ans == 'N')));
+            cout << endl;
+            promptCount += promptRate;
         }
     }
+
+    building.printTransportedPeopleInfo();
 }

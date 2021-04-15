@@ -36,6 +36,14 @@ void Floor::setDownStatus(bool newStatus) {
 void Floor::addPerson(Person newPerson) {
 	lobby.push_back(newPerson);
 }
-void Floor::removePerson(Person) {
+void Floor::removePerson(Person delPerson) {
+	// Just removing people based on their arrival time
+	// Is unique in this simulation, but in the future possibly adding an id to each person
+	// and removing based on that id would be better
 
+	for (int i = 0; i < lobby.size(); i++) {
+		if (lobby.at(i).getElevatorArrivalTime() == delPerson.getElevatorArrivalTime()) {
+			lobby.erase(lobby.begin() + i);
+		}
+	}
 }
