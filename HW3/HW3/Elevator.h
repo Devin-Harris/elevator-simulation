@@ -13,6 +13,7 @@ class Elevator {
 		int currentFloor;
 		Direction direction;
 		Heap<T> car;
+		Door door;
 	public:
 
 		Elevator();
@@ -29,6 +30,8 @@ class Elevator {
 		void setDirection(Direction);
 		void addToCar(T);
 		void removePeopleAtDesiredFloor(int);
+		void openDoor();
+		void closeDoor();
 
 };
 

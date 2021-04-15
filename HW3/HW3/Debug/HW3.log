@@ -1,37 +1,3 @@
-﻿  Building.cpp
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.cpp(141,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.cpp(181,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.cpp(205,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.cpp(218,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(84,37): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(80): message : while compiling class template member function 'void Heap<T>::maxheapify(void)'
-          with
-          [
-              T=Person
-          ]
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Elevator.cpp(51): message : see reference to function template instantiation 'void Heap<T>::maxheapify(void)' being compiled
-          with
-          [
-              T=Person
-          ]
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Elevator.cpp(6): message : while compiling class template member function 'Elevator<Person>::Elevator(void)'
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.cpp(10): message : see reference to function template instantiation 'Elevator<Person>::Elevator(void)' being compiled
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Building.h(14): message : see reference to class template instantiation 'Elevator<Person>' being compiled
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(85,39): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(132,37): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(128): message : while compiling class template member function 'void Heap<T>::minheapify(void)'
-          with
-          [
-              T=Person
-          ]
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Elevator.cpp(47): message : see reference to function template instantiation 'void Heap<T>::minheapify(void)' being compiled
-          with
-          [
-              T=Person
-          ]
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Heap.cpp(133,39): warning C4018: '<': signed/unsigned mismatch
-  HW3.cpp
+﻿  HW3.cpp
 C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\HW3.cpp(22,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-C:\Users\Devin\Desktop\elevator-simulation\HW3\HW3\Elevator.cpp(28): warning C4715: 'Elevator<Person>::getNextFloor': not all control paths return a value
   HW3.vcxproj -> C:\Users\Devin\Desktop\elevator-simulation\HW3\Debug\HW3.exe

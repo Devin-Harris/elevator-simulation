@@ -22,11 +22,11 @@ int main()
     srand(time(NULL));
 
     // For prompting to continue simulation
-    int promptRate = 20;
+    const int promptRate = 20;
     int promptCount = promptRate;
 
-    int minFloor = 3;
-    int maxFloor = 8;
+    const int minFloor = 3;
+    const int maxFloor = 8;
     Building building(minFloor, maxFloor);
 
     Scheduler scheduler(minFloor, maxFloor);
@@ -59,8 +59,19 @@ int main()
                         }
                     }
                 }
+                // If person was just added to the floor the elevator is on, put person in car if car moving in right direction
+                if (temp.getStartingFloor() == building.getElevatorFloor()) {
+                    int cartSizeBefore, cartSizeAfter;
+                    cartSizeBefore = building.getElevatorSize();
+                    building.loadElevatorCar();
+                    cartSizeAfter = building.getElevatorSize();
+                    if (cartSizeAfter - cartSizeBefore > 0) {
+                        cout << endl << "Picked up " << cartSizeAfter - cartSizeBefore << " people" << endl;
+                    }
+                }
             }
         }
+
 
         int prevFloor = building.getElevatorFloor();
         building.goToFloor(building.getNextFloor());
@@ -80,6 +91,8 @@ int main()
         int cartSizeBefore = 0;
         int cartSizeAfter = 0;
 
+        building.openElevator();
+
         cartSizeBefore = building.getElevatorSize();
         building.removePeopleAtDesiredFloor(clock.getCount());
         cartSizeAfter = building.getElevatorSize();
@@ -94,8 +107,10 @@ int main()
             cout << endl << "Picked up " << cartSizeAfter - cartSizeBefore << " people" << endl;
         }
 
+        building.closeElevator();
+
         clock.incCount();
-        // Ask around every 20 time units if user want to continue simulation
+        // Ask around every promptRate time units if user want to continue simulation
         if (clock.getCount() >= promptCount && clock.getCount() != 0) {
             char ans;
             cout << endl << "Continue the simulation? (y, n)" << endl;

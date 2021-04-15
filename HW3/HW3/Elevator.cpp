@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Elevator.h"
+#include "Door.h"
 
 template <class T>
 Elevator<T>::Elevator() {
@@ -64,4 +65,12 @@ void Elevator<T>::removePeopleAtDesiredFloor(int time) {
 			person.setDesiredFloorArrivalTime(time);
 		}
 	}
+}
+template <class T>
+void Elevator<T>::openDoor() {
+	door.setOpenedStatus(true);
+}
+template <class T>
+void Elevator<T>::closeDoor() {
+	door.setOpenedStatus(false);
 }

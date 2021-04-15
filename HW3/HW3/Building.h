@@ -37,6 +37,8 @@ public:
 	void setFloorDown(int floorNum, bool status);
 	void addPersonToFloorAtIndex(int index, Person temp);
 	void loadElevatorCar();
+	void openElevator();
+	void closeElevator();
 
 	// Member Functions
 	void printBuildingInfo(int time);

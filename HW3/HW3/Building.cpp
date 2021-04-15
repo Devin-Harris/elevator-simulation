@@ -206,6 +206,12 @@ void Building::loadElevatorCar() {
 		elevator.addToCar(peopleToAddToCar.at(j));
 	}
 }
+void Building::openElevator() {
+	elevator.openDoor();
+}
+void Building::closeElevator() {
+	elevator.openDoor();
+}
 
 void Building::printBuildingInfo(int time) {
 	cout << "Current iteration: " << time << endl;
