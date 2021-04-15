@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "Elevator.h"
-#include "Door.h"
 
 template <class T>
 Elevator<T>::Elevator() {

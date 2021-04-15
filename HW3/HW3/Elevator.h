@@ -5,6 +5,8 @@
 #include "Heap.h"
 #include "Heap.cpp"
 #include "Direction.h"
+#include "Door.h"
+
 using namespace std;
 
 template <class T>
@@ -12,8 +14,8 @@ class Elevator {
 	private:
 		int currentFloor;
 		Direction direction;
-		Heap<T> car;
 		Door door;
+		Heap<T> car;
 	public:
 
 		Elevator();
